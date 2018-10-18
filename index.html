@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:700"/>
+    <link rel="stylesheet" href="styles.css"/>
+    <title>Carousel</title>
+  </head>
+  <body>
+    <h1 class="main-header">Carousel</h1>
+    <div class="slider-container" onmouseover="stopScroll()" onmouseleave="startScroll()">
+      <div class="slide">
+        <img src="https://source.unsplash.com/UylqA1MFQLo/800x600" />
+        <div class="title">Facilisis Mauris Sit</div>
+        <div class="write-up">Tristique magna sit amet purus gravida.</div>
+      </div>
+      <div class="slide">
+        <img src="https://source.unsplash.com/Sg48mOsbnp4/800x600" />
+        <div class="title">Quam Vulputate Dignissim</div>
+        <div class="write-up">Arcu vitae elementum curabitur vitae nunc.</div>
+      </div>
+      <div class="slide">
+        <img src="https://source.unsplash.com/qJfznuTMAYA/800x600" />
+        <div class="title">Scelerisque Viverra Mauris</div>
+        <div class="write-up">Hac habitasse platea dictumst quisque sagittis.</div>
+      </div>
+      <div class="slide">
+        <img src="https://source.unsplash.com/DWPjxlWk-hk/800x600" />
+        <div class="title">Aliquam Nulla</div>
+        <div class="write-up">Viverra aliquet eget sit amet tellus.</div>
+      </div>
+      <a class="left" onclick="prevSlide()"><i class="fas fa-angle-left"></i></a>
+      <a class="right" onclick="nextSlide()"><i class="fas fa-angle-right"></i></a>
+    </div>
+    <div class="indicator-group">
+      <div class="indicators" id="mini-slide-one"></div>
+      <div class="indicators" id="mini-slide-two"></div>
+      <div class="indicators" id="mini-slide-three"></div>
+      <div class="indicators" id="mini-slide-four"></div>
+    </div>
+    <div id="timer"></div>
+    <script src="index.js"></script>
+  </body>
+</html>

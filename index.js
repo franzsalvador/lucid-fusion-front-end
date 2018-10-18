@@ -49,13 +49,25 @@ function activateIndicators() {
 }
 
 let scrollInterval
-
+let countdown
+let timer = 2
 const startScroll = () => {
   scrollInterval = setInterval(nextSlide, 3000)
+  countdown = setInterval(runClock, 1000)
+  timer = 2
 }
 
 const stopScroll = () => {
   clearInterval(scrollInterval)
+  clearInterval(countdown)
+}
+
+function runClock() {
+  const $timer = document.getElementById('timer')
+  $timer.textContent = timer
+  timer === 0
+    ? timer = 2
+    : timer--
 }
 
 startScroll()

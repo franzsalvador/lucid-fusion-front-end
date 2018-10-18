@@ -15,9 +15,8 @@ System Requirements
 - MongoDB v4
 
 ## Key Features
-### User can scroll with navigation buttons
+- User can scroll with navigation buttons
+- User can pause carousel when hovering over images
+- User can use view indicators as thumbnails
 
-### User can pause carousel when hovering over images
-
-### User can use view indicators as thumbnails
 ![Carousel](carousel.gif)

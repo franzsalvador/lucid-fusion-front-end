@@ -14,6 +14,7 @@ const prevSlide = () => {
       : slideIndex = slideIndex -= 1
     $slides[slideIndex].setAttribute('class', 'slide slideInLeft')
     displaySlides()
+    activateIndicators()
   }, 600)
 }
 
@@ -25,6 +26,7 @@ const nextSlide = () => {
       : slideIndex = slideIndex += 1
     $slides[slideIndex].setAttribute('class', 'slide slideInRight')
     displaySlides()
+    activateIndicators()
   }, 600)
 }
 
@@ -34,4 +36,14 @@ function displaySlides() {
     $slides[i].style.display = 'none'
   }
   $slides[slideIndex].style.display = 'block'
+}
+
+function activateIndicators() {
+  const $indicators = document.getElementsByClassName('indicators')
+  for (let i = 0; i < $indicators.length; i++) {
+    if (i === slideIndex) {
+      $indicators[i].setAttribute('class', ' indicators active-indicator')
+    }
+    else $indicators[i].setAttribute('class', 'indicators')
+  }
 }

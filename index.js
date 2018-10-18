@@ -47,3 +47,15 @@ function activateIndicators() {
     else $indicators[i].setAttribute('class', 'indicators')
   }
 }
+
+let scrollInterval
+
+const startScroll = () => {
+  scrollInterval = setInterval(nextSlide, 3000)
+}
+
+const stopScroll = () => {
+  clearInterval(scrollInterval)
+}
+
+startScroll()

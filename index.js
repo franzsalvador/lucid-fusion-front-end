@@ -16,6 +16,7 @@ const prev = () => {
   nextSlide === 0
     ? nextSlide = $slides.length - 1
     : nextSlide = nextSlide - 1
+  displaySlides()
 }
 
 const next = () => {
@@ -28,6 +29,30 @@ const next = () => {
   nextSlide === $slides.length - 1
     ? nextSlide = 0
     : nextSlide = nextSlide + 1
+  displaySlides()
+}
+
+function displaySlides() {
+  const $slides = document.getElementsByClassName('slide')
+  for (let i = 0; i < $slides.length; i++) {
+    if (i !== previousSlide) {
+      $slides[i].setAttribute('class', 'slide')
+      $slides[i].style.display = 'none'
+    }
+    if (i === previousSlide) {
+      $slides[i].setAttribute('class', 'slide previous-slide')
+      $slides[i].style.display = 'inline'
+    }
+    if (i === nextSlide) {
+      $slides[i].setAttribute('class', 'slide next-slide')
+      $slides[i].style.display = 'inline'
+    }
+    if (i === currentSlide) {
+      $slides[i].setAttribute('class', 'slide')
+      $slides[i].style.display = 'inline'
+    }
+  }
+  activateIndicators()
 }
 
 function activateIndicators() {
@@ -63,4 +88,5 @@ function runClock() {
     : timer--
 }
 
+displaySlides()
 startScroll()

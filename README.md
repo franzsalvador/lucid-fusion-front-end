@@ -14,4 +14,4 @@ https://franzsalvador.github.io/lucid-fusion-front-end/
 - User can pause carousel when hovering over images
 - User can use view indicators as thumbnails
 
-![Carousel](carousel.gif)
+![Carousel](carouselV2.gif)

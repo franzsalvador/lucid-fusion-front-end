@@ -1,47 +1,64 @@
 /* eslint-disable no-unused-vars */
 
-let slideIndex = 0
-
-displaySlides(slideIndex)
-
 const $slides = document.getElementsByClassName('slide')
 
-const prevSlide = () => {
-  $slides[slideIndex].setAttribute('class', 'slide slideOutLeft')
-  setTimeout(() => {
-    slideIndex < 1
-      ? slideIndex = $slides.length - 1
-      : slideIndex = slideIndex -= 1
-    $slides[slideIndex].setAttribute('class', 'slide slideInLeft')
-    displaySlides()
-    activateIndicators()
-  }, 600)
+let currentSlide = 0
+let previousSlide = $slides.length - 1
+let nextSlide = currentSlide + 1
+
+const prev = () => {
+  currentSlide === 0
+    ? currentSlide = $slides.length - 1
+    : currentSlide = currentSlide -= 1
+  previousSlide === 0
+    ? previousSlide = $slides.length - 1
+    : previousSlide = previousSlide - 1
+  nextSlide === 0
+    ? nextSlide = $slides.length - 1
+    : nextSlide = nextSlide - 1
+  displaySlides()
 }
 
-const nextSlide = () => {
-  $slides[slideIndex].setAttribute('class', 'slide slideOutRight')
-  setTimeout(() => {
-    slideIndex >= $slides.length - 1
-      ? slideIndex = 0
-      : slideIndex = slideIndex += 1
-    $slides[slideIndex].setAttribute('class', 'slide slideInRight')
-    displaySlides()
-    activateIndicators()
-  }, 600)
+const next = () => {
+  currentSlide === $slides.length - 1
+    ? currentSlide = 0
+    : currentSlide = currentSlide + 1
+  previousSlide === $slides.length - 1
+    ? previousSlide = 0
+    : previousSlide = previousSlide + 1
+  nextSlide === $slides.length - 1
+    ? nextSlide = 0
+    : nextSlide = nextSlide + 1
+  displaySlides()
 }
 
 function displaySlides() {
   const $slides = document.getElementsByClassName('slide')
   for (let i = 0; i < $slides.length; i++) {
-    $slides[i].style.display = 'none'
+    if (i !== previousSlide) {
+      $slides[i].setAttribute('class', 'slide')
+      $slides[i].style.display = 'none'
+    }
+    if (i === previousSlide) {
+      $slides[i].setAttribute('class', 'slide previous-slide')
+      $slides[i].style.display = 'inline'
+    }
+    if (i === nextSlide) {
+      $slides[i].setAttribute('class', 'slide next-slide')
+      $slides[i].style.display = 'inline'
+    }
+    if (i === currentSlide) {
+      $slides[i].setAttribute('class', 'slide')
+      $slides[i].style.display = 'inline'
+    }
   }
-  $slides[slideIndex].style.display = 'block'
+  activateIndicators()
 }
 
 function activateIndicators() {
   const $indicators = document.getElementsByClassName('indicators')
   for (let i = 0; i < $indicators.length; i++) {
-    if (i === slideIndex) {
+    if (i === currentSlide) {
       $indicators[i].setAttribute('class', ' indicators active-indicator')
     }
     else $indicators[i].setAttribute('class', 'indicators')
@@ -51,8 +68,9 @@ function activateIndicators() {
 let scrollInterval
 let countdown
 let timer = 2
+
 const startScroll = () => {
-  scrollInterval = setInterval(nextSlide, 3000)
+  scrollInterval = setInterval(next, 3000)
   countdown = setInterval(runClock, 1000)
   timer = 2
 }
@@ -70,4 +88,5 @@ function runClock() {
     : timer--
 }
 
+displaySlides()
 startScroll()
